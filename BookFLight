@@ -1,0 +1,23 @@
+Feature: As a user i will be able to book a flight
+
+  Scenario Outline: Select the Departure and Destination
+  	Given Homepage is displayed
+	Then Select the departure city as "<DepartureCity>"
+	And Select the destination city as "<DestinationCity>"
+	And click on chooseflight button
+	Then Message "Flight from" "<DepartureCity>" to "<DestinationCity>" should be shown
+	
+   Examples:
+	 | DepartureCity|DestinationCity|
+	 | Paris  		| Buenos Aires	|
+	 | Philadelphia | ROme			|
+	 | Boston   	| London		|
+	 | Portland		| Berlin		|
+	 | San Diego 	| New York		|
+	 | Mexico City	| Dublin		|
+	 | São Paolo	| Cairo			|
+   
+  Scenario Outline: Verify the contents of confirmation page
+    Given I am on Confirmation page
+    Then fields like Id,Status,Amount,Card nUmber,Expiration,AuthCode and Date should be shown
+    

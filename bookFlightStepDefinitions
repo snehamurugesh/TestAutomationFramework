@@ -1,0 +1,51 @@
+package com.cucumberFramework.stepdefinitions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+
+import com.cucumberFramework.helper.WaitHelper;
+import com.cucumberFramework.pageObjects.LoginLogoutPage;
+import com.cucumberFramework.testBase.TestBase;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+
+public class bookFightStepDefinitions extends TestBase {
+
+	BookFlightPage bookFlightPage = new BookFlightPage(driver);
+	WaitHelper waitHelper = new WaitHelper(driver);
+	
+ [Given(@"Homepage is displayed")]
+    public void GivenHomepageIsDisplayed()
+    {
+        driver.get(arg1);
+		bookFlightPage.HomepageText.isDisplayed();
+    }
+    
+ [Then(@"Select the departure city as ""(.*)""")]
+    public void ThenSelectTheDepartureCityAs(string departcity)
+    {
+       bookFlightPage.selectDepartureCity(departcity)
+    }
+    
+ [Then(@"Select the destination city as ""(.*)""")]
+    public void ThenSelectTheDestinationCityAs(string destcity)
+    {
+         bookFlightPage.selectDestinationCity(destcity)
+    }
+    
+ [Then(@"click on chooseflight button")]
+    public void ThenClickOnChooseflightButton()
+    {
+        bookFlightPage.clickFindFlightsButton();
+    }
+    
+  [Then(@"Message ""(.*)"" ""(.*)"" to ""(.*)"" should be shown")]
+    public void ThenMessageToShouldBeShown(string s1, string s1, string s3)
+    {
+        bookFlightPage.verifyMessage(s1,s2,s3);
+    }
+
+}

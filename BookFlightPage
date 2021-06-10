@@ -1,0 +1,150 @@
+package com.cucumberFramework.pageObjects;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import com.cucumberFramework.helper.WaitHelper;
+
+public class LoginLogoutPage {
+	
+	private WebDriver driver;
+	
+	@FindBy(xpath="//select[@name='fromPort']")
+	public WebElement departuteCity;
+	
+	@FindBy(xpath="//select[@name='toPort']")
+	WebElement destinationCity;
+	
+	@FindBy(xpath="//input[@value='Find Flights']")
+	public WebElement FindFlightButton;
+	
+	@FindBy(xpath="//h1[contains(text(),'Welcome to the Simple Travel Agency!')]")
+	WebElement HomepageText;
+	
+	@FindBy(xpath="//input[@value='Choose This Flight'][1]")
+	WebElement ChooseFlightButton;
+	
+	@FindBy(xpath="//input[@name='inputName']")
+	public WebElement NameTextBox;
+	
+	@FindBy(xpath="//input[@name='address']")
+	public WebElement AddressTextBox
+	
+	@FindBy(xpath="//input[@name='city']")
+	public WebElement CityTextBox;
+	
+	@FindBy(xpath="//input[@name='state']")
+	public WebElement StateTextBox;
+	
+	@FindBy(xpath="//input[@name='zipCode']")
+	public WebElement ZipcodeTextbox;
+	
+	@FindBy(xpath="//select[@name='cardType']")
+	public WebElement CardType;
+	
+	@FindBy(xpath="//input[@name='creditCardNumber']")
+	public WebElement CreditcardNumber;
+	
+
+	@FindBy(xpath="//input[@name='creditCardMonth']")
+	public WebElement MOnth;
+	
+	@FindBy(xpath="//input[@name='creditCardYear']")
+	public WebElement year;
+	
+	@FindBy(xpath="//input[@name='nameOnCard']")
+	public WebElement nameonthecard;
+	
+	@FindBy(xpath="//input[@name='rememberMe']")
+	public WebElement RemebermeCheckbox;
+	
+	@FindBy(xpath="//input[@value='Purchase Flight']")
+	public WebElement purchaseFlightButton;
+	
+	WaitHelper waitHelper;
+	
+	public BookFLightPage(WebDriver driver){
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		waitHelper = new WaitHelper(driver);
+		//waitHelper.WaitForElement(userName, 60);
+	}
+	
+	public void selectDepartureCity(String city){
+		Select depcty = new Select(driver.findElement(By.name("fromPort")));
+		depcty.selectByVisibleText(city);
+	}
+	
+	public void selectDestinationCity(String city){
+		Select destcty = new Select(driver.findElement(By.name("toPort")));
+		destcty.selectByVisibleText(city);
+	}
+	
+	public void clickFindFlightsButton(){
+		FindFlightButton.click();
+	}
+	
+	public void clickChooseFlightsButton(){
+	{
+	ChooseFlightButton.click();
+	}
+	
+	
+	public void enterName(string name)
+	{
+	NameTextBox.Sendkeys(name);
+	}
+	
+	public void enterAddress(string address)
+	{
+	AddressTextBox.Sendkeys(address);
+	}
+	
+	public void enterCity(string city)
+	{
+	CityTextBox.Sendkeys(city);
+	}
+	
+	public void enterState(string state)
+	{
+	StateTextBox.Sendkeys(state);
+	}
+	
+	public void enterZipCode(string zipcode)
+	{
+	ZipcodeTextbox.Sendkeys(zipcode);
+	}
+	public void enterCardnumber(string cardnum)
+	{
+	CreditcardNumber.Sendkeys(cardnum);
+	}
+	public void enterMOnth(string month)
+	{
+	MOnth.Sendkeys(month);
+	}
+	public void enterYear(string year)
+	{
+	year.Sendkeys(month);
+	}
+	
+	
+	public void enterNameonthecard(string name)
+	{
+	nameonthecard.Sendkeys(name);
+	}
+	
+	public void clickflightbtn(string name)
+	{
+	purchaseFlightButton.click();
+	}
+}
